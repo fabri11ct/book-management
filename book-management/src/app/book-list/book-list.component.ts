@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book';
-import { AddBook, RemoveBook } from '../books/book.action';
+import { addBook, RemoveBook } from '../books/book.action';
 import { AppState } from './../app.state';
 
 @Component({
@@ -19,7 +19,7 @@ export class BookListComponent {
   }
 
   addBook(id: string, title: string, author: string){
-    this.store.dispatch(AddBook({id, title, author}));
+    this.store.dispatch(addBook({id, title, author}));
   }
 
   removeBook(bookId: string){
