@@ -1,19 +1,19 @@
-import { createReducer, on } from "@ngrx/store";
-import { addBook, RemoveBook, addBookSuccess, addBookFailure } from "./book.action";
-import { Book } from "../models/book";
+import { createReducer, on } from '@ngrx/store';
+import { addBook, removeBook, Book } from './book.actions';
 
-export const initialState: Book[] = [];
+export interface BooksState {
+  books: ReadonlyArray<Book>;
+  lastRemovedBook: Book | null;
+}
 
-export const BookReducer = createReducer(
-    initialState,
-    on(addBook, (state, { id, title, author }) => {return state}),
-    on(addBookSuccess, (state, { id, title, author }) => [...state, {id, title, author}]),
-    on(addBookFailure, (state, {error}) => {
-        console.error(error);
-        return state;
-    }),
+export const initialState: ReadonlyArray<Book> = [];
 
-
-    on(RemoveBook, (state, { bookId }) => state.filter(book => book.id !== bookId))
+export const booksReducer = createReducer(
+  initialState,
+  on(addBook, (state, { book }) => {
+    return [...state, book];
+  }),
+  on(removeBook, (state, { bookId }) => {
+    return state.filter((book) => book.id !== bookId);
+  })
 );
-
