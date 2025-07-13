@@ -1,0 +1,30 @@
+:root {
+  --primary-color: #3f51b5;
+  --primary-dark-color: #303f9f;
+  --accent-color: #ff4081;
+  --accent-dark-color: #f50057;
+  --background-color: #f5f5f5;
+  --surface-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 40px;
+}
